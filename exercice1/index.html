@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="FR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <title>Js - partie 5 - exercice 1</title>
+    </head>
+    <body>
+        <!--Créer un formulaire demandant un mot de passe et une confirmation de mot de passe et comportant un bouton.
+        Au clic sur le bouton, si les deux champs sont identiques, les entourer de vert. Sinon les entourer en rouge.-->
+        <form>
+            <p>
+                <label for="password">Mot de passe :</label>
+                <input type="password" name="password" id="password" />
+            </p> 
+            <p>
+                <label for="verifPassword" id="test">Confirmation mot de passe  :</label>
+                <input type = "password" name="verifPassword" id="verifPassword" />
+            </p>
+            <p>
+                <button type="button" name="verify" onclick="verif()">verifier si identiques</button>
+            </p>
+        </form>
+        <script>
+            function verif() {
+                var password = document.getElementById('password');  // recupere la valeur de l'ID password
+                var verifPassword = document.getElementById('verifPassword');
+                //d'abord verifier que password ou verifPassword ne sont pas vide.
+                if ((password.value == '') || (verifPassword.value == '')) { 
+                    alert('Erreur! vous n\'avez pas bien remplis le formulaire.');
+                }else {
+                    if (password.value == verifPassword.value) {
+                    password.style.borderColor = "#13e008";
+                    verifPassword.style.borderColor = "#13e008";
+                    } else {
+                    password.style.borderColor = "#ed1515";
+                    verifPassword.style.borderColor = "#ed1515";
+                }
+                }
+            } 
+        </script>
+    </body>
+</html>

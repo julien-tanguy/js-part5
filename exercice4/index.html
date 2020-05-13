@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+    <html lang="FR">
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+            <title>Js - partie 5 - exercice 4</title>
+            <style>
+                .mouseIn {
+                    width: 900px;
+                    height: 600px;
+                }
+                .mouseOut {
+                    width: 600px;
+                    height: 400px;
+                }
+            </style>
+        </head>
+        <body>
+            <!--Créer un fichier html et y ajouter une image. Au clic sur l'image changer sa source, au survol, l'agrandir.-->
+            <img src="img/695.jpg"  alt="monster" id="moto" onclick="change()" onmouseover="mouseIn()" onmouseout="mouseOut()" />
+            <script>
+                //--------------------------------------CHANGE-------------------------
+                var imgIndex ='1';
+                var img = document.getElementById('moto');
+
+                function change () {
+                    if (imgIndex == '1') {                      // pour eviter l'index, utiliser image.src.match('image1')
+                        img.src = 'img/848.jpg';                //                               img.src = 'img2.jpg';
+                        imgIndex = '2';     
+                    }else {                                     //else
+                        img.src = 'img/695.jpg';                //                               img.src = 'img1.jpg';
+                        imgIndex = '1';
+                    }
+                };
+                //------------------------------------SURVOL------------------------------
+                function mouseIn (){
+                    img.classList.remove('mouseOut')
+                    img.classList.add('mouseIn');
+                }
+                function mouseOut() {
+                    img.classList.remove('mouseIn')
+                    img.classList.add('mouseOut');
+                }
+            </script>
+        </body>
+    </html>
+    

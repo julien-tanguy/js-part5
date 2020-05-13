@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+        <form>
+            <fieldset>
+                <legend>Formulaire</legend>
+                <label for="lastname">Nom</label>
+                <input type="text" id="name" name="Name" onfocus="bigFoot(id)" onblur="noFocus(id)" />
+                <label for="firstname">Prénom</label>
+                <input type="text" id="surname" name="Surname" onfocus="bigFoot(id)" onblur="noFocus(id)" />
+            </fieldset>
+        </form>
+        <script>
+            // id dans les input se fait rappeler par elementId
+            function bigFoot(elementId) {
+                document.getElementById(elementId).style.border = 'black 3px solid';
+            }
+            function noFocus(elementId) {
+                document.getElementById(elementId).style.border = 'black 1px solid';
+            }
+        </script>
+    </body>
+</html>
+<!-- <!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+        <form>
+            <fieldset>
+                <legend>Formulaire</legend>
+                <label for="lastname">Nom</label>
+                <input type="text" id="name" name="Name" onfocus="bigFoot(this)" onblur="noFocus(this)" />
+                <label for="firstname">Prénom</label>
+                <input type="text" id="surname" name="Surname" onfocus="bigFoot(this)" onblur="noFocus(this)" />
+            </fieldset>
+        </form>
+        <script>
+            // id dans les input se fait rappeler par elementId
+            function bigFoot(element) {
+
+                element.style.border = 'black 10px solid';
+            }
+            function noFocus(element) {
+                element.style.border = 'black 1px solid';
+            }
+        </script>
+    </body>
+</html> -->

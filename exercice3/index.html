@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+    <html lang="FR">
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+            <title>Js - partie 5 - exercice 3</title>
+            <style>
+                .okColor {
+                    color: #2a8f25;
+                }
+                .errorColor {
+                    color: #9c1515;
+                }
+            </style>
+        </head>
+        <body>
+            <!--Créer un formulaire contenant un champ nom, un champ mail et un champ age.
+            Si les champs ne correspondent pas à une regex, afficher un message d'erreur en rouge sous le champs dès que l'on entre une valeur.-->
+            <form id="formId">
+                <div>
+                    <label for="name">nom :</label>
+                    <input type="text" name="name" id="name" />
+                    <p></p>
+                </div> 
+                <div>
+                    <label for="mail">mail :</label>
+                    <input type="email" name="mail" id="mail" />
+                    <p></p>
+                </div> 
+                <div>
+                    <label for="age">age :</label>
+                    <input type="number" name="age" id="age" />
+                    <p></p>
+                </div>  
+            </form>
+            <script>
+                //permet par la suite "d'attraper" les differentes partie du form grace a son name avec nom de la var.name (ici form.mail pour l'inuput du mail par ex) 
+                var form = document.querySelector('#formId');
+                
+                //ecouter la modification du mail 
+                form.mail.addEventListener('input', function() {
+                    validEmail(this); //this renvoie a l'element ecouter, ici form.mail.
+                });
+                //ecouter la modification du name 
+                form.name.addEventListener('input', function() {
+                    validName(this); 
+                });
+                //ecouter la modification de l'age 
+                form.age.addEventListener('input', function() {
+                    validAge(this); 
+                });
+
+                //---------------------------------------------------------EMAIL---------------------------------------
+                const validEmail = function(inputEmail){
+                    // new ReGexp au format objet = Accent circonflexe =debut du regexp, puis [les caractéres autorisés] +=droit a plusieur {1}= un seul {2,10}= entre 2 et 10 $=fin du regexp 'g' = global, touts les matchs doivent correspondrent.
+                    let mailRegExp = new RegExp ('^[a-zA-Z0-9\.\-_]+@[a-zA-Z0-9\-\.]+\.[a-z]{2,10}$', 'g');
+
+                let testEmail = mailRegExp.test(inputEmail.value);
+                //attrape la balise juste apres inputEmail, donc aprés form.mail donc le span
+                let span = inputEmail.nextElementSibling;
+
+                if (testEmail) {
+                    span.innerHTML = 'Adresse valide'; // innerHTML = récupère ou définit la syntaxe HTML
+                    span.classList.remove('errorColor')
+                    span.classList.add('okColor');
+                }else {
+                    span.innerHTML ='L\'adresse n\'est pas valide!';
+                    span.classList.remove('okColor')
+                    span.classList.add('errorColor');
+                }
+                };
+                //---------------------------------------------------------NAME---------------------------------------
+                const validName = function(inputName){
+                    let nameRegExp = new RegExp ('^[a-zA-Z ]+$', 'g');
+
+                    let testName = nameRegExp.test(inputName.value);
+                    let span = inputName.nextElementSibling;
+
+                    if (testName) {
+                        span.innerHTML = 'nom valide'; 
+                        span.classList.remove('errorColor')
+                        span.classList.add('okColor');
+                    }else {
+                        span.innerHTML ='le nom n\'est pas valide!';
+                        span.classList.remove('okColor')
+                        span.classList.add('errorColor');
+                    }
+                };
+                //---------------------------------------------------------AGE---------------------------------------
+                const validAge = function(inputAge){
+                    let ageRegExp = new RegExp ('^(([0-9])|([1-9][0-9])|(1(([01][0-9])|(2[0-5]))))$', 'g');
+
+                    let testAge = ageRegExp.test(inputAge.value);
+                    let span = inputAge.nextElementSibling;
+
+                    if (testAge) {
+                        span.innerHTML = 'age valide'; 
+                        span.classList.remove('errorColor')
+                        span.classList.add('okColor');
+                    }else {
+                        span.innerHTML ='l\'age n\'est pas valide!';
+                        span.classList.remove('okColor')
+                        span.classList.add('errorColor');
+                    }
+                };
+            </script>
+        </body>
+    </html>
